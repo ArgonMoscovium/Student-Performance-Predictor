@@ -5,6 +5,7 @@ matplotlib
 scikit-learn
 catboost
 xgboost
+dill
 #-e . # when adding libs while building projects, comment '-e .'. 
 #Only in the end uncomment it.. else it will build the package each time it's run  
 # 'pip install -r requirements.txt' 
