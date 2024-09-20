@@ -22,7 +22,7 @@ def save_object(file_path, obj): # create dir, open file, save in specific file 
     except Exception as e:
         raise CustomException(e, sys)
     
-def evaluate_models(X_train, y_train,X_test,y_test,models,param):
+def evaluate_models(X_train, y_train, X_test, y_test, models, param):
     try:
         report = {}
 
@@ -54,9 +54,26 @@ def evaluate_models(X_train, y_train,X_test,y_test,models,param):
         raise CustomException(e, sys)
     
 def load_object(file_path):
-    try:
-        with open(file_path, "rb") as file_obj:
-            return pickle.load(file_obj)
+    """
+    Load a Python object from a file using dill serialization.
 
+    Args:
+        file_path (str): The path to the file containing the serialized object.
+
+    Returns:
+        object: The deserialized Python object.
+
+    Raises:
+        CustomException: If an error occurs during file reading or deserialization.
+
+    This function is used to load saved models, preprocessors,
+    or other Python objects that have been serialized using dill.
+    """
+    try:
+        # Open file in binary read mode 
+        with open(file_path, "rb") as file_obj:
+            # Use dill to desearlize and load the object from file
+            return pickle.load(file_obj)
     except Exception as e:
+        # If any exception occors duing file opening/desearlization raise CE
         raise CustomException(e, sys)

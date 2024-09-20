@@ -20,7 +20,7 @@ from src.utils import save_object
 # ...using @dataclass would make it very easy to do so without having to modify an __init__ method.
 @dataclass 
 class DataTransformationConfig:
-    preprocessor_obj_file_path = os.path.join("artifacts", "proprocessor.pkl") # define path for saving preprocessor object, Without @dataclass, you would need to write an __init__ method explicitly:
+    preprocessor_obj_file_path = os.path.join("artifacts", "preprocessor.pkl") # define path for saving preprocessor object, Without @dataclass, you would need to write an __init__ method explicitly:
 
 class DataTransformation:
     def __init__(self):
@@ -32,13 +32,13 @@ class DataTransformation:
         for data transformation
         '''
         try:
-            numerical_columns = ["writing score", "reading score"] # define num & cat columns
+            numerical_columns = ["writing_score", "reading_score"] # define num & cat columns
             categorical_columns = [
                 "gender",
-                "race/ethnicity",
-                "parental level of education",
+                "race_ethnicity",
+                "parental_level_of_education",
                 "lunch",
-                "test preparation course",
+                "test_preparation_course",
             ]
             # create pipeline for num features
             num_pipeline = Pipeline(
@@ -79,7 +79,7 @@ class DataTransformation:
             logging.info("Obtaining preprocessing object")
             preprocessing_obj = self.get_data_transformer_object()
 
-            target_column_name = "math score"
+            target_column_name = "math_score"
             numerical_columns = ["writing_score", "reading_score"]
 
             # separate features and targets
