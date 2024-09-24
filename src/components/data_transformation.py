@@ -7,7 +7,7 @@ import pandas as pd
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import OneHotEncoder,StandardScaler
+from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 from src.exception import CustomException
 from src.logger import logging
@@ -46,16 +46,16 @@ class DataTransformation:
                 ("imputer", SimpleImputer(strategy="median")), # handle missing values by imputing with median, coz: outliers
                 ("scaler", StandardScaler()) # standardize features by subtra mean & div by variance
                 ]
-            )
+            )            
+            
             # create pipeline for cat features
             cat_pipeline = Pipeline(
-
                 steps=[
-                ("imputer", SimpleImputer(strategy="most_frequent")), # impute with most freq value
-                ("one_hot_encoder", OneHotEncoder()), # encode as one-hot numeric array
+                ("imputer", SimpleImputer(strategy="most_frequent", fill_value="missing")), # impute with most freq value
+                ("one_hot_encoder", OneHotEncoder(handle_unknown="ignore")), # encode as one-hot numeric array
                 ("scaler", StandardScaler(with_mean=False)) # False: coz data is sparse after one-hot coding
                 ]
-            )
+            )            
             logging.info(f"Categorical columns: {categorical_columns}") # Log column information
             logging.info(f"Numerical columns: {numerical_columns}")
 
@@ -89,9 +89,7 @@ class DataTransformation:
             input_feature_test_df = test_df.drop(columns=[target_column_name], axis=1)
             target_feature_test_df = test_df[target_column_name]
 
-            logging.info(
-                f"Applying preprocessing object on training dataframe and testing dataframe."
-            )
+            logging.info(f"Applying preprocessing object on training dataframe and testing dataframe.")
             input_feature_train_arr = preprocessing_obj.fit_transform(input_feature_train_df)
             input_feature_test_arr = preprocessing_obj.transform(input_feature_test_df)
 
@@ -113,4 +111,3 @@ class DataTransformation:
         except Exception as e:
             raise CustomException(e,sys)
         
-

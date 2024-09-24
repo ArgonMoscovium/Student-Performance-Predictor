@@ -5,7 +5,7 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler 
 from src.pipeline.predict_pipeline import CustomData, PredictPipeline
 
-application = Flask(__name__) # Initialize Flask application, WSGI application (communicates bwn webserver & webapplication)
+application = Flask(__name__) # Initialize Flask application, this object is an WSGI application (communicates bwn webserver & webapplication)
 app = application
 
 # Define route for the index page, root route renders an 'index.html' template
@@ -31,7 +31,7 @@ def predict_datapoint():
             writing_score = float(request.form.get('writing_score'))
         )
 
-        # Convert data  to a df
+        # Convert data to a df
         pred_df = data.get_data_as_data_frame()
         print(pred_df)
         print("Before Prediction")
@@ -47,7 +47,7 @@ def predict_datapoint():
         return render_template('home.html', results=results[0])
     
 # Run the Flask app, type http://127.0.0.1:5000/ in the address bar, the feature names were not in proper format(corrected it)
-# then call /predict
+# then type '/predictdata'.. try 'crtrl+C' to quit 
 if __name__=="__main__":
-    app.run(host="0.0.0.0")        
+    app.run(host="0.0.0.0")        # Put app.run(debug=True).. changes will be instantaneously be visible thru the host link 
 

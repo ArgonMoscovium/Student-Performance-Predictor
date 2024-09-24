@@ -1,7 +1,9 @@
 '''
-helps in creating ML application as a package, 
-helps in deployment,  
-which can be installed by others or the user itself 
+Its objective is to ensure that program is installed correctly, 
+...using ‘pip’ use setup.py to install any module wo calling setup.py directly
+Helps in creating ML application as a package, 
+.. helps in deployment,which can be installed by others or the user itself 
+
 '''
 from setuptools import find_packages, setup
 from typing import List

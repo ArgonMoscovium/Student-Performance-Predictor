@@ -17,7 +17,7 @@ from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 
 @dataclass
-class DataIngestionConfig: # dataclass that defines file paths for storing ingested data, stores in the 'artifacts' folder
+class DataIngestionConfig: # dataclass that defines file paths for storing ingested data, stored in the 'artifacts' folder
     train_data_path: str = os.path.join("artifacts", "train.csv")
     test_data_path: str = os.path.join("artifacts", "test.csv")
     raw_data_path: str = os.path.join("artifacts", "data.csv")
