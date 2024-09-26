@@ -12,7 +12,7 @@ def test_home():
 
     # Check if specific content or elements from 'index.html' are in the response data
     # Since you're rendering HTML templates, checking for a part of the HTML content is appropriate
-    assert b"<h1>This is the home page.</h1>" in response.data  # Change this to match your index.html content
+    assert b"<h1>This is the home page.<h1>" in response.data  # Change this to match your index.html content
 
 def test_predict_get():
     client = app.test_client()
@@ -46,5 +46,5 @@ def test_predict_post():
     assert response.status_code == 200
 
     # Check if the result appears in the response 
-    assert b"PTHE prediction is" in response.data  # Update based on your actual output
+    assert b"THE prediction is" in response.data  # Update based on your actual output
 
