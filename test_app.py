@@ -47,5 +47,5 @@ def test_predict_post():
     assert response.status_code == 200
 
     # Check if the result appears in the response 
-    assert re.search(b"THE\s+prediction\s+is", response.data) # Check if the result appears in the response
+    assert re.search(b"THE\s+prediction\s+is", response.data)
 

@@ -10,7 +10,7 @@ on:
 
 # Define the jobs to be executed
 jobs:
-  # Job to build Docker image
+  ###--------- Job to build Docker image
   dockerbuild:
     runs-on: ubuntu-latest  # Use the latest Ubuntu runner
     steps:
@@ -19,7 +19,7 @@ jobs:
       # Build Docker image with a unique tag based on current timestamp
       run: docker build . --file DockerFile --tag workflow-test:$(date +%s)
 
-  # Job to build and test the Python application
+  ###-------- Job to build and test the Python application
   build-and-test:
     runs-on: ubuntu-latest
 
@@ -41,7 +41,7 @@ jobs:
       run: |
         pytest  # Run tests using pytest
 
-  # Job to build and publish Docker image on Docker Hub
+  ###------- Job to build and publish Docker image on Docker Hub
   build-and-publish:
     needs: build-and-test  # This job runs only if build-and-test job succeeds
     runs-on: ubuntu-latest
