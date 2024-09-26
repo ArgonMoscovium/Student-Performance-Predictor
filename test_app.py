@@ -1,4 +1,5 @@
 from app import app
+import re
 
 def test_home():
     # Create a test client using Flask's built-in test client
@@ -46,5 +47,5 @@ def test_predict_post():
     assert response.status_code == 200
 
     # Check if the result appears in the response 
-    assert b"THE prediction is" in response.data # Check if the result appears in the response
+    assert re.search(b"THE\s+prediction\s+is", response.data) # Check if the result appears in the response
 
