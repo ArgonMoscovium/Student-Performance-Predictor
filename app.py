@@ -5,8 +5,7 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler 
 from src.pipeline.predict_pipeline import CustomData, PredictPipeline
 
-application = Flask(__name__) # Initialize Flask application, this object is an WSGI application (communicates bwn webserver & webapplication)
-app = application
+app = Flask(__name__) # Initialize Flask application, this object is an WSGI application (communicates bwn webserver & webapplication)
 
 # Define route for the index page, root route renders an 'index.html' template
 @app.route('/')
@@ -20,7 +19,7 @@ def predict_datapoint():
         # If it's a GET request, simply render the home page containing data fields
         return render_template('home.html') 
     else:
-        # If it's a POST request, collect form data into CustomData object then conv to df, make preds and render results
+        # If it's a POST request, collect form data into CustomData object then convert to df, make preds and render results
         data = CustomData(
             gender = request.form.get('gender'),
             race_ethnicity = request.form.get('race_ethnicity'),
@@ -39,7 +38,7 @@ def predict_datapoint():
         # Initialize the prediction pipeline
         predict_pipeline = PredictPipeline()
         print("Mid Prediction")
-        # Make prediction
+        # Make predictions
         results = predict_pipeline.predict(pred_df)
         print("after Prediction")
 
@@ -49,5 +48,5 @@ def predict_datapoint():
 # Run the Flask app, type http://127.0.0.1:5000/ in the address bar, the feature names were not in proper format(corrected it)
 # then type '/predictdata'.. try 'crtrl+C' to quit 
 if __name__=="__main__":
-    app.run(host="0.0.0.0")        # Put app.run(debug=True).. changes will be instantaneously be visible thru the host link 
+    app.run(host="0.0.0.0", port=5000)        # Put app.run(debug=True).. changes will be instantaneously be visible thru the host link 
 
