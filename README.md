@@ -1,4 +1,4 @@
-# Student Exam Performance Predictior
+# Student Exam Performance Predictor
 
 This project is a machine learning-driven web application that predicts a student’s math score based on various features like **gender, parental education, lunch type**, and more. The project demonstrates a complete machine learning workflow, including data ingestion, preprocessing, model training, and deployment, using cutting-edge tools and techniques like CI/CD pipelines, containerization, and automated testing.
 
