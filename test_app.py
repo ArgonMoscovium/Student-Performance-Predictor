@@ -46,5 +46,5 @@ def test_predict_post():
     assert response.status_code == 200
 
     # Check if the result appears in the response 
-    assert b"THE prediction is" in response.data.strip()  # Check if the result appears in the response
+    assert b"THE prediction is" in response.data # Check if the result appears in the response
 
