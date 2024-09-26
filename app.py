@@ -45,7 +45,7 @@ def predict_datapoint():
         # Render the results on home page
         return render_template('home.html', results=results[0])
     
-# Run the Flask app, type http://127.0.0.1:5000/ in the address bar, the feature names were not in proper format(corrected it)
+# Run the Flask app, type http://127.0.0.1:5000/ in the address bar (Or your "IPv4 Address":5000), the feature names were not in proper format(corrected it)
 # then type '/predictdata'.. try 'crtrl+C' to quit 
 if __name__=="__main__":
     app.run(host="0.0.0.0", port=5000)        # Put app.run(debug=True).. changes will be instantaneously be visible thru the host link 
